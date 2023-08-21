@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { CounterService } from 'src/app/counter.service';
+import { increment } from 'src/app/store/counter.actions';
 
 
 @Component({
@@ -8,13 +10,13 @@ import { CounterService } from 'src/app/counter.service';
   styleUrls: ['./counter-controls.component.css'],
 })
 export class CounterControlsComponent {
-  constructor(private counterService: CounterService) {}
+  constructor(private store: Store) {}
 
   increment() {
-    this.counterService.increment();
+    this.store.dispatch(increment({value:2}))
   }
 
   decrement() {
-    this.counterService.decrement();
+   // this.counterService.decrement();
   }
 }
