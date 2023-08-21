@@ -18,9 +18,11 @@ export class NewTrainingComponent implements OnInit {
 
   ngOnInit() {
      this.exercises = this.trainingService.getAvailableExercises();
-    // let fs = collection(this.db, 'availableExercises')
-    // const k=collectionData(fs).subscribe(i=>console.log(i))
-  }
+    //  let fs = collection(this.db, 'availableExercises')
+     
+    //  const k=collectionData(fs).subscribe(i=>console.log(i))
+ 
+    }
 
   onStartTraining(form: NgForm) {
     this.trainingService.startExercise(form.value.exercise);
