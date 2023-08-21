@@ -3,7 +3,8 @@ import { NgForm } from '@angular/forms';
 
 import { TrainingService } from '../training.service';
 import { Exercise } from '../exercise.model';
-
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-new-training',
   templateUrl: './new-training.component.html',
@@ -11,11 +12,12 @@ import { Exercise } from '../exercise.model';
 })
 export class NewTrainingComponent implements OnInit {
   exercises: Exercise[] = [];
-
-  constructor(private trainingService: TrainingService) { }
+  constructor(private trainingService: TrainingService, private db: Firestore) { }
 
   ngOnInit() {
-    this.exercises = this.trainingService.getAvailableExercises();
+    // this.exercises = this.trainingService.getAvailableExercises();
+    let i=collection(this.db,'availableExercises')
+    const item=collectionData(i).subscribe(result=>console.log(result))
   }
 
   onStartTraining(form: NgForm) {
