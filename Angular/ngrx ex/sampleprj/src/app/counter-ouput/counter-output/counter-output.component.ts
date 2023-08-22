@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { selectCount, selectDoubleCount } from 'src/app/store/counter.selectors';
 
 
 @Component({
@@ -8,12 +9,13 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './counter-output.component.html',
   styleUrls: ['./counter-output.component.css'],
 })
-export class CounterOutputComponent  {
+export class CounterOutputComponent {
   count$: Observable<number>
-  counterServiceSub?: Subscription;
+  doubleCount$: Observable<number>
 
   constructor(private store: Store<{ counter: number }>) {
-    this.count$ = store.select('counter')
+    this.count$ = store.select(selectCount)
+    this.doubleCount$ = store.select(selectDoubleCount)
   }
 
 }
