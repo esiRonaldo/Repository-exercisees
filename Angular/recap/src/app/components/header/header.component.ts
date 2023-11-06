@@ -16,12 +16,15 @@ export class HeaderComponent implements OnInit{
   constructor(private uiService: UiService, private router: Router) {
     this.subscription = this.uiService.onToggle().subscribe((Value) => this.showAddTask = Value)
   }
+  
   toggleAddTask() {
-    this.uiService.toggleAddTask
+    this.uiService.toggleAddTask();
   }
+  
   hasRoute(route: string) {
     return this.router.url === route;
   }
+
   ngOnInit(): void {}
 
   ngOnDestroy() {

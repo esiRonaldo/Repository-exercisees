@@ -6,15 +6,15 @@ import { Injectable } from '@angular/core';
 })
 export class UiService {
   private showAddTask: boolean = false;
-  private Subject = new Subject<any>()
+  private subject = new Subject<any>()
   constructor() { }
 
   toggleAddTask(): void {
     this.showAddTask = !this.showAddTask;
-    this.Subject.next(this.showAddTask)
+    this.subject.next(this.showAddTask)
   }
 
   onToggle(): Observable<any> {
-    return this.Subject.asObservable();
+    return this.subject.asObservable();
   }
 }
